@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#! /usr/bin/env python
 
 import urllib2
 import urllib
@@ -32,21 +33,28 @@ class YoudaoDic():
         data = request.read()
         return json.loads(data)
 
-    def format_for_command():
+    def format_for_command(self, text):
         """
         为命令行格式化翻译结果
         """
+        data = main(text)
         # TODO：格式化字符串
-        pass
+        if data:
+            print '有道翻译：\n'
+            print '\t原文本：', data.get('query', text) 
+            translation = data.get('translation', None) 
+            if translation: 
+                for t in translation:
+                    print '\n\t翻译：', t
+            else:
+                '未找到该词'
 
 def main(text):
     if text and text.strip() != '':
         return YoudaoDic().translate(text)
-    else:
-        return '没有参数哦，亲！'
 
 if __name__ == '__main__':
     if sys.argv and len(sys.argv) >= 2:
-        data = main(sys.argv[1])
+        YoudaoDic().format_for_command(sys.argv[1])
     else:
         print '没有参数哦，亲!'
