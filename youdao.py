@@ -57,4 +57,4 @@ if __name__ == '__main__':
     if sys.argv and len(sys.argv) >= 2:
         YoudaoDic().format_for_command(sys.argv[1])
     else:
-        print '没有参数哦，亲!'
+        print '没有参数哦，亲!!'
