@@ -40,12 +40,12 @@ class YoudaoDic():
         data = main(text)
         # TODO：格式化字符串
         if data:
-            print '有道翻译：\n'
+            print '有道翻译：'
             print '\t原文本：', data.get('query', text) 
             translation = data.get('translation', None) 
             if translation: 
                 for t in translation:
-                    print '\n\t翻译：', t
+                    print '\t翻  译：', t
             else:
                 '未找到该词'
 
