@@ -14,9 +14,9 @@ class YoudaoDic():
 
     URL = 'http://fanyi.youdao.com/openapi.do'
 
-    KEY_FROM = 'YoudaoDic'
+    KEY_FROM = 'Dic-EVE'
 
-    KEY = '1943349323'
+    KEY = '975360059'
 
     TYPE = 'data'
 
@@ -55,6 +55,7 @@ def main(text):
 
 if __name__ == '__main__':
     if sys.argv and len(sys.argv) >= 2:
-        YoudaoDic().format_for_command(sys.argv[1])
+        l = sys.argv[1:]
+        YoudaoDic().format_for_command(' '.join(l))
     else:
-        print '没有参数哦，亲!!'
+        print '有道翻译： \n\t提示：请输入您要翻译的词或句子'
