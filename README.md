@@ -1,4 +1,11 @@
-#python_script
+# Python 词典程序
 
-some useful python script
+## 简介：
+这是一个用 Python 语言完成的一个词典程序，目前利用了有道词典的 API
+
+## TODO: 
+1. 深入了解API提供的功能
+1. 增加当前程序的适用程度
+1. 增加单词本程序
+3. 增加图形界面
 

@@ -21,7 +21,13 @@ class Calculator():
         """
         pass
 
-    def find_parentheses(self, formula):
+    def find_multiplication(self, formula):
+        """
+        查找算式中的乘法
+        """
+        pass
+
+    def find_parentheses(self, formula): 
         """
         查找算式中的括号
         """
@@ -38,7 +44,6 @@ class Calculator():
             dic['sub_formula'] = sub_formula
             dic['formula_left'] = formula_left
             dic['formula_right'] = formula_right
-            print 'formula', dic
             return dic
         else:
             # raise an Exception

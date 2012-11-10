@@ -23,7 +23,7 @@ class YoudaoDic():
     # 可选值xml, json
     DOC_TYPE = 'json'
 
-    def translate(self, text):
+    def translate(self, text, debug = True):
         """
         翻译方法，传入要翻译的文本，返回结果字典
         """
@@ -31,13 +31,15 @@ class YoudaoDic():
         params = {'keyfrom': self.KEY_FROM, 'key': self.KEY, 'type': self.TYPE, 'doctype': self.DOC_TYPE, 'version': self.VERSION ,'q': text}
         request = urllib2.urlopen(self.URL, urllib.urlencode(params))
         data = request.read()
+        if debug:
+            print 'JSON 数据为：', data
         return json.loads(data)
 
     def format_for_command(self, text):
         """
         为命令行格式化翻译结果
         """
-        data = main(text)
+        data = self.translate(text)
         # TODO：格式化字符串
         if data:
             print '有道翻译：'
@@ -50,12 +52,11 @@ class YoudaoDic():
                 '未找到该词'
 
 def main(text):
-    if text and text.strip() != '':
-        return YoudaoDic().translate(text)
+    YoudaoDic().format_for_command(text)
 
 if __name__ == '__main__':
     if sys.argv and len(sys.argv) >= 2:
         l = sys.argv[1:]
-        YoudaoDic().format_for_command(' '.join(l))
+        main(' '.join(l))
     else:
         print '有道翻译： \n\t提示：请输入您要翻译的词或句子'
