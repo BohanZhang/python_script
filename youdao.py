@@ -39,7 +39,9 @@ class YoudaoDic():
         """
         为命令行格式化翻译结果
         """
-        data = self.translate(text)
+        if text and text.strip() != '':
+            data = self.translate(text)
+        else: return False
         # TODO：格式化字符串
         if data:
             print '有道翻译：'
@@ -51,12 +53,12 @@ class YoudaoDic():
             else:
                 '未找到该词'
 
-def main(text):
-    YoudaoDic().format_for_command(text)
-
-if __name__ == '__main__':
+def main():
     if sys.argv and len(sys.argv) >= 2:
         l = sys.argv[1:]
-        main(' '.join(l))
+        YoudaoDic().format_for_command(' '.join(l))
     else:
         print '有道翻译： \n\t提示：请输入您要翻译的词或句子'
+
+if __name__ == '__main__':
+    main()
